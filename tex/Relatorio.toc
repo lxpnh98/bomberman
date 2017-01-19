@@ -1,0 +1,14 @@
+\select@language {portuges}
+\contentsline {chapter}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{2}
+\contentsline {chapter}{\numberline {2}Descri\IeC {\c c}\IeC {\~a}o do Problema}{3}
+\contentsline {chapter}{\numberline {3}Conce\IeC {\c c}\IeC {\~a}o da Solu\IeC {\c c}\IeC {\~a}o}{4}
+\contentsline {section}{\numberline {3.1}Estruturas de Dados}{4}
+\contentsline {section}{\numberline {3.2}Implementa\IeC {\c c}\IeC {\~a}o}{4}
+\contentsline {subsection}{\numberline {3.2.1}Tarefa 1}{4}
+\contentsline {subsection}{\numberline {3.2.2}Tarefa 2}{5}
+\contentsline {subsection}{\numberline {3.2.3}Tarefa 3}{5}
+\contentsline {subsection}{\numberline {3.2.4}Tarefa 4}{6}
+\contentsline {subsection}{\numberline {3.2.5}Tarefa 5}{6}
+\contentsline {subsection}{\numberline {3.2.6}Tarefa 6}{7}
+\contentsline {section}{\numberline {3.3}Testes}{7}
+\contentsline {chapter}{\numberline {4}Conclus\IeC {\~a}o}{8}

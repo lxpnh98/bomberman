@@ -1,15 +1,15 @@
-{- | 
-Module: Main 
-Description: Módulo descrito em Haskell que  
+{- |
+Module: Main
+Description: Módulo descrito em Haskell que
             implementa o jogo Bomberman utilizando o Gloss (e a biblioteca
             gloss-juicy).
-Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>; 
-           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>; 
+Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>;
+           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>;
 -}
 module Main where
 
-import Graphics.Gloss         
-import Graphics.Gloss.Data.Picture  
+import Graphics.Gloss
+import Graphics.Gloss.Data.Picture
 import Graphics.Gloss.Interface.Pure.Game
 
 import System.Random

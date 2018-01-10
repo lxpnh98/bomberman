@@ -1,9 +1,9 @@
-{- | 
-Module: Main 
-Description: Módulo descrito em Haskell que  
+{- |
+Module: Main
+Description: Módulo descrito em Haskell que
             implementa um bot para o jogo Bomberman.
-Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>; 
-           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>; 
+Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>;
+           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>;
 -}
 module Main where
 

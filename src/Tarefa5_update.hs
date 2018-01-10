@@ -1,9 +1,9 @@
-{- | 
-Module: Tarefa5_update 
-Description: Módulo descrito em Haskell que  
+{- |
+Module: Tarefa5_update
+Description: Módulo descrito em Haskell que
              reage a eventos e faz o tempo avançar no jogo Bomberman.
-Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>; 
-           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>; 
+Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>;
+           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>;
  -}
 module Tarefa5_update where
 
@@ -336,7 +336,7 @@ killPlayers (player@(_,pPos,_,_,_):t) pos =
 
 -- | Função que remove os blocos e powerups marcados como para remover.
 removeExploded :: [[Tile]] -> [PW] -> ([[Tile]],[PW])
-removeExploded mapa pws = 
+removeExploded mapa pws =
     let rMapa = map (map (\x -> if x == RemovedTile then Empty else x)) mapa
         rPws = filter (\x -> (fst x)/=RemovedPW) pws
     in (rMapa,rPws)

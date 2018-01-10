@@ -1,9 +1,9 @@
-{- | 
-Module: Tarefa5_config 
-Description: Módulo descrito em Haskell que  
-             configura o jogo Bomberman. 
-Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>; 
-           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>; 
+{- |
+Module: Tarefa5_config
+Description: Módulo descrito em Haskell que
+             configura o jogo Bomberman.
+Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>;
+           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>;
  -}
 module Tarefa5_config where
 

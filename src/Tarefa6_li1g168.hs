@@ -1,9 +1,9 @@
-{- | 
-Module: Tarefa6_li1g168 
-Description: Módulo descrito em Haskell que  
+{- |
+Module: Tarefa6_li1g168
+Description: Módulo descrito em Haskell que
             implementa um bot para o jogo Bomberman.
-Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>; 
-           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>; 
+Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>;
+           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>;
 -}
 module Tarefa6_li1g168 where
 
@@ -19,7 +19,7 @@ type Bomb = (Pos,Int,Int)
 -- | Função que dado um mapa, o número do jogador a controlar, e o número de
 -- ticks até ao final do jogo, retorna um comando para o jogador.
 bot :: [String] -> Int -> Int -> Maybe Char
-bot mapa player ticks = 
+bot mapa player ticks =
     let playerPos = getPlayerPos mapa player
         movable = nub $ getMovable mapa playerPos playerPos []
         commonUtilityMap = calcCommonUtility mapa player ticks movable
@@ -30,7 +30,7 @@ bot mapa player ticks =
 
 -- | Função que lista todas as posições que o jogador consegue alcançar.
 getMovable :: [String] -> Pos -> Pos -> [Pos] -> [Pos]
-getMovable mapa initPos pos@(c,l) checked = 
+getMovable mapa initPos pos@(c,l) checked =
     if (isMovable mapa pos && not (elem pos checked) && (distanceSquared pos initPos) <= 12) || pos == initPos
     then pos : (getMovable mapa initPos (c-1,l) (pos:checked) ++
                 getMovable mapa initPos (c+1,l) (pos:checked) ++
@@ -38,7 +38,7 @@ getMovable mapa initPos pos@(c,l) checked =
                 getMovable mapa initPos (c,l+1) (pos:checked))
     else []
 
--- | Função que testa se um jogador pode ocupar uma dada posição 
+-- | Função que testa se um jogador pode ocupar uma dada posição
 isMovable :: [String] -> Pos -> Bool
 isMovable mapa pos
     | elem (getPos mapa pos) ['#','?'] = False
@@ -103,11 +103,11 @@ getPathsTo mapa init@(x1,y1) end ticks currentPath =
 -- | Função que retorna a possição de um jogador.
 --
 -- >>> getPlayerPos ["#######","#     #","# # # #","# ??  #","# #?# #","#     #","#######","+ 3 3","+ 3 4","* 3 5 0 1 10","0 3 5 +","1 5 5"] 0
---                  (3,5) 
+--                  (3,5)
 getPlayerPos :: [String] -> Int -> Pos
 getPlayerPos (h:t) x
     | h !! 0 == intToDigit x = (read (w !! 1), read (w !! 2))
-    | otherwise = getPlayerPos t x   
+    | otherwise = getPlayerPos t x
     where w = words h
 
 --------------------------------------------------------------------------------
@@ -185,11 +185,11 @@ calcBombUtility mapa player ((pos,v):t) =
 -- | Função que calcula o número de tijolos que uma bomba explodiria se posto
 -- numa dada posição.
 bricksExploded :: [String] -> Int -> Pos -> Float
-bricksExploded mapa player (c,l) = 
+bricksExploded mapa player (c,l) =
     fromIntegral (countBricks mapa (c,l) (0,(-1)) size 0 +
                   countBricks mapa (c,l) (0,1) size 0 +
                   countBricks mapa (c,l) ((-1),0) size 0 +
-                  countBricks mapa (c,l) (1,0) size 0) 
+                  countBricks mapa (c,l) (1,0) size 0)
     where size = getExplosionSize mapa player
 
 -- | Função auxiliar de /bricksExploded/.

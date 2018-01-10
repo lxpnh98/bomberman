@@ -1,9 +1,9 @@
-{- | 
-Module: Tarefa5_common 
-Description: Módulo descrito em Haskell que  
-             define funções e tipos comuns para os módulos da tarefa 5. 
-Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>; 
-           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>; 
+{- |
+Module: Tarefa5_common
+Description: Módulo descrito em Haskell que
+             define funções e tipos comuns para os módulos da tarefa 5.
+Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>;
+           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>;
  -}
 module Tarefa5_common where
 

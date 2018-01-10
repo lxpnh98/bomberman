@@ -1,6 +1,6 @@
 {-|
 Module: Main
-Description: Módulo descrito em Haskell que 
+Description: Módulo descrito em Haskell que
              faz o encode e decode das funções
              definidas nas tarefas anteriores
 Copyrigth: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>;
@@ -8,7 +8,7 @@ Copyrigth: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>;
  -}
 module Main where
 
-import GHC.IO.Encoding (setLocaleEncoding, utf8) 
+import GHC.IO.Encoding (setLocaleEncoding, utf8)
 import System.Environment
 import Data.Char
 
@@ -65,7 +65,7 @@ dropPredefined :: [String] -> Int -> [String]
 dropPredefined mapa dim = dropPredefinedAux 0 mapa dim
 
 -- | Função auxiliar que, dada uma linha, uma lista de /Strings/ e uma
--- dimensão, retira 
+-- dimensão, retira
 dropPredefinedAux :: Int -> [String] -> Int -> [String]
 dropPredefinedAux _ [] _ = []
 dropPredefinedAux line (h:t) dim
@@ -85,11 +85,11 @@ mkMapBits ('?':t) = 1:mkMapBits t
 -- inexistência de Power Ups, e /True/ a existência de Power Ups.
 mkPWsBits :: [String] -> Bits
 mkPWsBits [] = []
-mkPWsBits (h:t) = 
+mkPWsBits (h:t) =
     if (h!!0) == '+'
         then (1:(intToBits (read (w!!1)) 7)) ++ ((intToBits (read (w!!2)) 7)) ++ (mkPWsBits t)
         else (0:(intToBits (read (w!!1)) 7)) ++ ((intToBits (read (w!!2)) 7)) ++ (mkPWsBits t)
-    where w = words h 
+    where w = words h
 
 -- | Função que retorna uma lista de /Bits/ com as informações acerca das
 -- bombas no mapa (posição, jogador que a colocou, raio de explosão e intantes
@@ -108,7 +108,7 @@ mkBombsBits (h:t) = (intToBits (read (w!!1)) 7) ++ -- coluna
 -- (posição, número e tipo dos Power Ups que cada um possui).
 mkPlayersBits :: [String] -> Bits
 mkPlayersBits [] = []
-mkPlayersBits (h:t) = 
+mkPlayersBits (h:t) =
     if length (w) == 3
     then (intToBits (read (w!!1)) 7) ++                        -- coluna
          (intToBits (read (w!!2)) 7) ++                        -- linha
@@ -246,11 +246,11 @@ lista_vazios = [(x,y) | x <- [(-2),(-1),1,2], y <- [(-2),(-1),1,2], (abs x /=
 
 -- | Função que adiciona a dimensao aos números negativos para poder comparar
 -- as coordenadas.
--- 
+--
 -- >>> normDim 7 [(1,1),(1,(-1)),((-1),(-1))]
 --               [(1,1),(1,5),(5,5)]
 normDim :: Int -> [(Int, Int)] -> [(Int, Int)]
-normDim _ []           = [] 
+normDim _ []           = []
 normDim dimensao (h:t) = (f,s):(normDim dimensao t)
     where f = if fst h < 0
                   then fst h + dimensao - 1
@@ -272,7 +272,7 @@ mkBlock 1 = '?'
 mkPWs :: Bits -> [String]
 mkPWs [] = []
 mkPWs bits = mkPW pw : mkPWs pws
-    where (pw,pws) = splitAt 15 bits 
+    where (pw,pws) = splitAt 15 bits
 
 -- | Função que dada uma lista de 15 /Ints/ retorna um /String/ que representa
 -- um Power Up.

@@ -1,7 +1,7 @@
 {-|
 Module: Main
-Description: Módulo descrito em Haskell que 
-             define os comandos executados 
+Description: Módulo descrito em Haskell que
+             define os comandos executados
              pelos jogadores no jogo "Bomberman"
 Copyrigth: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>;
            Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>;
@@ -18,7 +18,7 @@ type Pos = (Int,Int)
 -- identificador de um jogador e o comando, deverá devolver o novo estado do
 -- jogo.
 move :: [String] -> Int -> Char -> [String]
-move m x cmd 
+move m x cmd
     | cmd == 'D' = cmdD m x
     | cmd == 'U' = cmdU m x
     | cmd == 'L' = cmdL m x
@@ -69,7 +69,7 @@ cmdB m x = if isBomb m pos || (maxBombs m x) <= (countBombs m x)
                where pos = getPlayerPos m x
 
 -- | Função que verifica se existe uma bomba numa dada posição.
--- 
+--
 -- >>> isBomb ["#######","#     #","# # # #",
 --             "# ??  #","# #?# #","#     #",
 --             "#######","+ 3 3","+ 3 4",
@@ -85,7 +85,7 @@ isBomb (h:t) (c,l) = if (h !! 0 == '*') && (read ((words h) !! 1) == c) && (read
                    else isBomb t (c,l)
 
 -- | Função que posiciona uma bomba numa dada posição se ela já não existir.
--- 
+--
 -- >>> setBomb ["#######","#     #","# # # #","# ??  #","# #?# #","#     #","#######","+ 3 3","+ 3 4","0 3 5","1 5 5"] 0
 --             ["#######","#     #","# # # #","# ??  #","# #?# #","#     #","#######","+ 3 3","+ 3 4","* 3 5 0 1 10","0 3 5","1 5 5"]
 setBomb :: [String] -> Int -> [String]
@@ -119,32 +119,32 @@ countBombs (h:t) x =
     if (h !! 0) == '*' && (words h) !! 3 == show x
     then 1 + countBombs t x
     else countBombs t x
- 
+
 -- | Função que adiciona, se existir, o Power Up da posição ao jogador.
 --
--- >>> addPWInPos ["#######","#     #","# # # #","# ??  #","# #?# #","#     #","#######","+ 3 3","+ 3 4","0 3 3"] "" (3,3) 
---                "+" 
+-- >>> addPWInPos ["#######","#     #","# # # #","# ??  #","# #?# #","#     #","#######","+ 3 3","+ 3 4","0 3 3"] "" (3,3)
+--                "+"
 addPWInPos :: [String] -> String -> Pos -> String
 addPWInPos [] s _ = s
-addPWInPos (h:t) s (c,l) 
+addPWInPos (h:t) s (c,l)
     | h !! 0 == '+' && (read ((words h) !! 1) == c) && (read ((words h) !! 2) == l) = '+' : s
     | h !! 0 == '!' && (read ((words h) !! 1) == c) && (read ((words h) !! 2) == l) = s ++ "!"
-    | otherwise = addPWInPos t s (c,l) 
+    | otherwise = addPWInPos t s (c,l)
 
 -- | Função que retorna uma String com os Power Ups do jogador x.
 --
--- >>> getPlayerPWs ["#######","#     #","# # # #","# ??  #","# #?# #","#     #","#######","+ 3 3","+ 3 4","* 3 5 0 1 10","0 3 5 +","1 5 5"] 
+-- >>> getPlayerPWs ["#######","#     #","# # # #","# ??  #","# #?# #","#     #","#######","+ 3 3","+ 3 4","* 3 5 0 1 10","0 3 5 +","1 5 5"]
 --                  "+"
-getPlayerPWs :: [String] -> Int -> String 
+getPlayerPWs :: [String] -> Int -> String
 getPlayerPWs (h:t) x = if h !! 0 == intToDigit x
                        then if length (words h) == 3
-                           then "" 
-                           else (words h) !! 3  
+                           then ""
+                           else (words h) !! 3
                        else getPlayerPWs t x
 
 -- | Função que altera a posição e quantidade de Power Ups de um jogador.
 --
--- >>> setPlayer ["0 3 5"] 0 (4,5) "+!" 
+-- >>> setPlayer ["0 3 5"] 0 (4,5) "+!"
 --               ["0 4 5 +!"]
 setPlayer :: [String] -> Int -> Pos -> String -> [String]
 setPlayer (h:t) x (c,l) s = if (h !! 0 /= intToDigit x)
@@ -154,22 +154,22 @@ setPlayer (h:t) x (c,l) s = if (h !! 0 /= intToDigit x)
 -- | Função que retorna o conteúdo de uma célula.
 --
 -- >>> getPos ["#######","#     #","# # # #","# ??  #","# #?# #","#     #","#######","+ 3 3","+ 3 4","* 3 5 0 1 10","0 3 5 +","1 5 5"] (3,3)
---            "+" 
+--            "+"
 getPos :: [String] -> Pos -> Char
-getPos m (c,l) = (m !! l) !! c 
+getPos m (c,l) = (m !! l) !! c
 
 -- | Função que retorna a possição de um jogador.
 --
 -- >>> getPlayerPos ["#######","#     #","# # # #","# ??  #","# #?# #","#     #","#######","+ 3 3","+ 3 4","* 3 5 0 1 10","0 3 5 +","1 5 5"] 0
---                  (3,5) 
+--                  (3,5)
 getPlayerPos :: [String] -> Int -> Pos
 getPlayerPos (h:t) x
     | h !! 0 == intToDigit x = (read (w !! 1), read (w !! 2))
-    | otherwise = getPlayerPos t x   
+    | otherwise = getPlayerPos t x
         where w = words h
 
 -- | Função que, dado o estado atual do jogo e uma posição, revome, se existir, o Power Up nessa posição.
--- 
+--
 -- >>> removePW ["#######","#     #","# # # #","# ??  #","# #?# #","#     #","#######","+ 3 3","+ 3 4","* 3 5 0 1 10","0 3 5 +","1 5 5"] (3,3)
 --              ["#######","#     #","# # # #","# ??  #","# #?# #","#     #","#######","+ 3 4","* 3 5 0 1 10","0 3 5 +","1 5 5"]
 removePW :: [String] -> Pos -> [String]

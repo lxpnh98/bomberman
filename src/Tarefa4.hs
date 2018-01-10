@@ -1,9 +1,9 @@
-{- | 
-Module: Main 
-Description: Módulo descrito em Haskell que  
-             faz o jogo avançar no tempo. 
-Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>; 
-           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>; 
+{- |
+Module: Main
+Description: Módulo descrito em Haskell que
+             faz o jogo avançar no tempo.
+Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>;
+           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>;
  -}
 module Main where
 
@@ -17,7 +17,7 @@ import Common
 
 -- | Representação de uma bomba (posição da bomba, tamanho da explosão)
 type Bomb = (Pos, Int)
- 
+
 -- | Avança o estado do jogo um tick para a frente, explodindo as bombas
 -- (incluindo os seus efeitos) e colocando os blocos da espiral nos ticks
 -- finais.
@@ -35,7 +35,7 @@ avanca state tick =
 -- | Reduz o contador decrescente de todas as bombas por um tick.
 tickBombs :: Map -> Map
 tickBombs [] = []
-tickBombs (h:t) = 
+tickBombs (h:t) =
     if (h!!0) == '*'
     then ((concat . intersperse " ") s ++ " " ++ show ((read (tick!!0)) - 1)) : tickBombs t
     else h : tickBombs t

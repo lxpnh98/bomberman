@@ -1,9 +1,9 @@
-{- | 
-Module: Bomberman 
-Description: Módulo descrito em Haskell que  
-             cria os mapas do jogo "Bomberman". 
-Copyrigth: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>; 
-           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>; 
+{- |
+Module: Bomberman
+Description: Módulo descrito em Haskell que
+             cria os mapas do jogo "Bomberman".
+Copyrigth: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>;
+           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>;
  -}
 module Bomberman where
 
@@ -57,11 +57,11 @@ mkBlock x | x<=1      = '+'
 
 -- | Função que adiciona a dimensao aos números negativos para poder comparar
 -- as coordenadas.
--- 
+--
 -- >>> normDim 7 [(1,1),(1,(-1)),((-1),(-1))]
 --               [(1,1),(1,5),(5,5)]
 normDim :: Int -> [(Int, Int)] -> [(Int, Int)]
-normDim _ []           = [] 
+normDim _ []           = []
 normDim dimensao (h:t) = (f,s):(normDim dimensao t)
     where f = if fst h < 0
                   then fst h + dimensao - 1

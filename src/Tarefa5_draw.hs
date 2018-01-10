@@ -1,9 +1,9 @@
-{- | 
-Module: Tarefa5_draw 
-Description: Módulo descrito em Haskell que  
+{- |
+Module: Tarefa5_draw
+Description: Módulo descrito em Haskell que
              desenha o estado do jogo Bomberman.
-Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>; 
-           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>; 
+Copyright: Alexandre Mendonça Pinho <a82441@alunos.uminho.pt>;
+           Joel Filipe Esteves Gama <a82202@alunos.uminho.pt>;
  -}
 module Tarefa5_draw where
 
@@ -15,7 +15,7 @@ import Tarefa5_common
 
 -- | Função que desenha o jogo.
 drawState :: Estado -> Picture
-drawState s = 
+drawState s =
     case s of
         (E (Menu buttons x) _ _ _ _ _ _ _) -> Pictures [Scale titleSize titleSize (Translate (fromIntegral ((-(windowWidth `div` 2)) + 30)) (fromIntegral ((windowHeight `div` 2) - 120)) (Text "Bomberman")),Translate 0 (-300) $ drawRects buttons x 0 textSize]
             where titleSize = 0.7
@@ -29,7 +29,7 @@ drawState s =
                brick,empty,rockTL,rockTR,rockBL,rockBR,rockTop,rockBottom,rockLeft,rockRight,rockCenter,
                center,horizontal,vertical,upper,lower,left,right] mapa pws bombs players blasts _) ->
             Translate (fromIntegral x) (fromIntegral y)
-                (Pictures [drawMap (length mapa) mapa (0,0) tileSize [brick,empty,rockTL,rockTR,rockBL,rockBR,rockTop,rockBottom,rockLeft,rockRight,rockCenter],                                        
+                (Pictures [drawMap (length mapa) mapa (0,0) tileSize [brick,empty,rockTL,rockTR,rockBL,rockBR,rockTop,rockBottom,rockLeft,rockRight,rockCenter],
                            drawPWs mapa pws tileSize [bombPW,flamePW],
                            drawBombs bombs tileSize bomb,
                            drawPlayers players tileSize [playerD,playerU,playerL,playerR,player2D,player2U,player2L,player2R,player3D,player3U,player3L,player3R,player4D,player4U,player4L,player4R],
@@ -41,7 +41,7 @@ drawState s =
 -- | Função que desenha o menu.
 drawRects :: [Button] -> Int -> Int -> Float -> Picture
 drawRects [] _ _ _ = Blank
-drawRects (h:t) selected current size = 
+drawRects (h:t) selected current size =
     Pictures [Translate 0 (fromIntegral ((windowHeight `div` 2) - ((current)*150))) (Pictures [Color rectColor (rectangleSolid 300 50), Color textColor (Translate (-30) (-10) (Scale size size (Text (fst h))))]), drawRects t selected (current+1) size]
     where (rectColor,textColor) = if current == selected then (greyN 0.3,greyN 0.0) else (greyN 0.5,greyN 0.0)
 

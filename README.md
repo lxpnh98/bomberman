@@ -22,7 +22,7 @@ cabal install gloss-juicy
 ```
 freeglut3:
 ```
-sudo apt install freeglut3
+sudo apt-get install freeglut3
 ```
 
 # Executar o jogo
